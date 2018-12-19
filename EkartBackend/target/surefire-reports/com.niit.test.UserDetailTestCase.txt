@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.niit.test.UserDetailTestCase
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.673 s <<< FAILURE! - in com.niit.test.UserDetailTestCase
+registerUserTestCase(com.niit.test.UserDetailTestCase)  Time elapsed: 0.432 s  <<< ERROR!
+javax.persistence.PersistenceException: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.niit.test.UserDetailTestCase.registerUserTestCase(UserDetailTestCase.java:42)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.niit.test.UserDetailTestCase.registerUserTestCase(UserDetailTestCase.java:42)
+Caused by: org.h2.jdbc.JdbcSQLException: 
+Unique index or primary key violation: "PRIMARY_KEY_9 ON PUBLIC.USERDETAIL(USERNAME) VALUES ('Anisha', 1)"; SQL statement:
+insert into UserDetail (address, customerName, emailId, enabled, mobileNo, password, role, username) values (?, ?, ?, ?, ?, ?, ?, ?) [23505-197]
+	at com.niit.test.UserDetailTestCase.registerUserTestCase(UserDetailTestCase.java:42)
+
