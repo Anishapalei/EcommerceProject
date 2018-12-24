@@ -1,4 +1,4 @@
-package com.niit.controller;
+/*package com.niit.controller;
 
 import java.util.Collection;
 
@@ -66,4 +66,4 @@ public class UserController {
 	
 	
 
-}
+}*/
