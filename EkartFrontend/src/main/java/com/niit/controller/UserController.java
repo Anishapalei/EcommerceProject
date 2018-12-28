@@ -15,6 +15,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UserController {
 	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView showRegister() {
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("cmd", new UserDetail());
+		mav.setViewName("Register");
+		return mav;
+	}
+
+	@RequestMapping(value = "/saveRegister", method = RequestMethod.POST)
+	public ModelAndView doRegister(@Valid @ModelAttribute("cmd") UserDetail user, BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+
+		if (result.hasErrors())
+
+		{
+			mav.setViewName("Register");
+
+			return mav;
+		} else {
+			user.setRole("ROLE_USER");
+			user.setEnabled(true);
+			userdao.save(user);
+			mav.setViewName("redirect:/login");
+			return mav;
+		}
+
+	}
+
+	
 	@RequestMapping(value="/login_success")
 	public String loginSuccess(HttpSession session,Model m)
 	
