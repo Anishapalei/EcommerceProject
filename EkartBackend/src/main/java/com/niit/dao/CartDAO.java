@@ -2,13 +2,14 @@ package com.niit.dao;
 
 import java.util.List;
 
-import com.niit.model.Cart;
+import com.niit.model.CartItem;
+
 
 public interface CartDAO {
 
-	public boolean addToCart(Cart cart);
-	public boolean deleteItemFromCart(Cart cart);
-	public boolean updateCartItem(Cart cart);
-	public Cart getCartItem(int cartId);
-	public List<Cart> listCartItems(String username);
+	public boolean addCartItem(CartItem cartItem);
+	public boolean deleteCartItem(CartItem cartItem);
+	public boolean updateCartItem(CartItem cartItem);
+	public List<CartItem> retrieveCartItems(String username);
+	public CartItem getCartItem(int cartItemId);
 }
