@@ -17,7 +17,10 @@ import com.niit.model.Product;
 import com.niit.model.Supplier;
 import com.niit.model.UserDetail;
 import com.niit.model.Cart;
+import com.niit.model.CartItem;
 import com.niit.model.Category;
+import com.niit.model.OrderDetail;
+
 
 @Configuration
 @EnableTransactionManagement
@@ -32,7 +35,7 @@ public class DBconfig
 		DriverManagerDataSource dataSource=new DriverManagerDataSource();
 				dataSource.setDriverClassName("org.h2.Driver");
 
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/test11");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/test21");
 		dataSource.setUsername("sa");
 		dataSource.setPassword("sa");
 		System.out.println("---DataSource Object is Created----");
@@ -46,16 +49,21 @@ public class DBconfig
 		Properties hibernateProp=new Properties();
 		
 		hibernateProp.put("hibernate.hbm2ddl.auto","update");
+		hibernateProp.put("hibernate.show_sql","true");
+		
 		hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 		
 		LocalSessionFactoryBuilder factory=new LocalSessionFactoryBuilder(getH2DataSource());
 		factory.addProperties(hibernateProp);
 		factory.addAnnotatedClass(Category.class);
-		factory.addAnnotatedClass(Product.class);
 		factory.addAnnotatedClass(Supplier.class);
-		factory.addAnnotatedClass(UserDetail.class);
-		factory.addAnnotatedClass(Cart.class);
-	
+		factory.addAnnotatedClass(Product.class);
+        factory.addAnnotatedClass(UserDetail.class);
+        factory.addAnnotatedClass(Cart.class);
+        factory.addAnnotatedClass(OrderDetail.class);
+        factory.addAnnotatedClass(CartItem.class);
+       
+        
 	
 		System.out.println("---SessionFactory Object  Created ----");
 		
@@ -70,3 +78,4 @@ public class DBconfig
 	}
 	
 }
+
